@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://pngd3tqpcb0f"]
+
+[ext_resource type="Script" uid="uid://6e47aa2g88de" path="res://components/orbit_gizmo.gd" id="1_ihaf8"]
+[ext_resource type="Shader" uid="uid://ca24jemyh01vw" path="res://shaders/disc_2d.gdshader" id="2_pingh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uutn3"]
+shader = ExtResource("2_pingh")
+shader_parameter/r1 = 0.2
+shader_parameter/smoothing = 0.1
+shader_parameter/color = Color(0.9, 0.261, 0.261, 1)
+shader_parameter/highlight = 0.0
+
+[node name="orbit_gizmo" type="Node2D"]
+script = ExtResource("1_ihaf8")
+bg_color = Color(0.529067, 0.529067, 0.529067, 1)
+red_color_x = Color(0.501961, 0, 0, 1)
+green_color_x = Color(0, 0.545098, 0, 1)
+blue_color_x = Color(0, 0, 0.545098, 1)
+
+[node name="circle" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_uutn3")
+tooltip_text = "Drag to rotate the view"
+metadata/idx = 0

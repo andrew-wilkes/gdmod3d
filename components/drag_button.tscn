@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxlb07b1itegr"]
+
+[ext_resource type="Shader" uid="uid://bxv8r375lsktf" path="res://shaders/highligter.gdshader" id="1_wpb8c"]
+[ext_resource type="Texture2D" uid="uid://culdgw0shj2gk" path="res://assets/icons/pan-hand.svg" id="2_u14qb"]
+[ext_resource type="Script" uid="uid://c38amnlxbetll" path="res://components/drag_button.gd" id="3_wpb8c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpb8c"]
+shader = ExtResource("1_wpb8c")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[node name="DragButton" type="TextureRect"]
+material = SubResource("ShaderMaterial_wpb8c")
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("2_u14qb")
+script = ExtResource("3_wpb8c")

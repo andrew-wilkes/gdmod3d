@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://b00wj3dxwf74w"]
+
+[ext_resource type="Shader" uid="uid://cwpxnglq6xq0b" path="res://shaders/multi_gizmo.gdshader" id="1_qly5u"]
+[ext_resource type="Script" uid="uid://dp56782p402iu" path="res://components/multi_gizmo.gd" id="1_vrmla"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fr34"]
+shader = ExtResource("1_qly5u")
+shader_parameter/asize = 2.2
+shader_parameter/ellipse_thickness = 0.2
+shader_parameter/ellipse_alpha = 0.8
+shader_parameter/smoothing = 0.02
+shader_parameter/r1 = 0.18
+shader_parameter/r2 = 0.75
+shader_parameter/ring_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/ring_thickness = 0.05
+shader_parameter/disc_radius = 0.59
+shader_parameter/disc_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/vx = Vector3(1, 0, 0)
+shader_parameter/vy = Vector3(0, 1, 0)
+shader_parameter/vz = Vector3(0, 0, 1)
+shader_parameter/colorx = Color(0.905882, 0.282353, 0.305882, 1)
+shader_parameter/colory = Color(0.381192, 0.967634, 0.450817, 1)
+shader_parameter/colorz = Color(0.12549, 0.309804, 0.67451, 1)
+shader_parameter/square_size = 0.15
+shader_parameter/square_pos = 0.445
+shader_parameter/small_circle_radius = 0.1
+shader_parameter/small_circle_pos = 0.9
+shader_parameter/line_width = 0.08
+shader_parameter/lx = Vector2(0.16, 0.83)
+shader_parameter/ly = Vector2(0.16, 0.83)
+shader_parameter/lz = Vector2(0.16, 0.83)
+shader_parameter/mouse_uv = Vector2(0, 0)
+shader_parameter/highlight_value = 0.2
+shader_parameter/show_x = false
+shader_parameter/show_y = false
+shader_parameter/show_z = false
+shader_parameter/hide_rear = false
+
+[node name="MultiGizmo" type="TextureRect"]
+material = SubResource("ShaderMaterial_5fr34")
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vrmla")

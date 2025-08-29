@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://baxkefuu6shwb"]
+
+[ext_resource type="Script" uid="uid://cefj8ptaju4bs" path="res://tools/svg_editor.gd" id="1_d75ep"]
+
+[node name="SVG_Editor" type="Node2D"]
+script = ExtResource("1_d75ep")

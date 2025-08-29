@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvjimjfrehi83"]
+
+[ext_resource type="Shader" uid="uid://bxv8r375lsktf" path="res://shaders/highligter.gdshader" id="1_370bm"]
+[ext_resource type="Script" uid="uid://b2ndo5kmkfv8u" path="res://components/click_button.gd" id="1_uba4l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3xh8"]
+shader = ExtResource("1_370bm")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[node name="ClickButton" type="TextureRect"]
+material = SubResource("ShaderMaterial_k3xh8")
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_uba4l")

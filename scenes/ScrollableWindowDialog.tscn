@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3osvn0w8owjg"]
+
+[ext_resource type="Script" uid="uid://dc1wx2f7la7vu" path="res://scenes/ScrollableWindowDialog.gd" id="1"]
+
+[node name="ScrollableWindowDialog" type="PopupPanel"]
+visible = true
+script = ExtResource("1")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SC" type="ScrollContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Dialog" type="Label" parent="VBox/SC"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+autowrap_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OK" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "OK"
+
+[node name="Spacer2" type="Control" parent="VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="size_changed" from="." to="." method="_on_size_changed"]
+[connection signal="pressed" from="VBox/HBox/OK" to="." method="_on_ok_pressed"]

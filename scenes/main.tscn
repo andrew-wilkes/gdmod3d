@@ -1,0 +1,349 @@
+[gd_scene load_steps=32 format=3 uid="uid://blrq0mxiisbhb"]
+
+[ext_resource type="Script" uid="uid://bim310seyram0" path="res://scenes/main.gd" id="1_hr41x"]
+[ext_resource type="PackedScene" uid="uid://yplxtdjvqgfm" path="res://scenes/3d_scene.tscn" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://bxv8r375lsktf" path="res://shaders/highligter.gdshader" id="2_d8hkl"]
+[ext_resource type="PackedScene" uid="uid://pngd3tqpcb0f" path="res://components/orbit_gizmo.tscn" id="3_i5fmm"]
+[ext_resource type="Texture2D" uid="uid://bi23x5of4n8xl" path="res://assets/icons/perspective.svg" id="3_nc8xq"]
+[ext_resource type="Texture2D" uid="uid://k06ya5ncvfqc" path="res://assets/icons/vertex-select.svg" id="3_x4hsu"]
+[ext_resource type="Script" uid="uid://b2ndo5kmkfv8u" path="res://components/click_button.gd" id="4_oq3et"]
+[ext_resource type="Texture2D" uid="uid://cgwh4ftmgrtax" path="res://assets/icons/edge-select.svg" id="5_b6ene"]
+[ext_resource type="Texture2D" uid="uid://dikvsigvwn3bq" path="res://assets/icons/face-select.svg" id="6_muw00"]
+[ext_resource type="Texture2D" uid="uid://ngqs36en2a27" path="res://assets/icons/triangles.svg" id="7_cr2gw"]
+[ext_resource type="Texture2D" uid="uid://dx6vcooprsg5s" path="res://assets/icons/wireframe.svg" id="7_mpwei"]
+[ext_resource type="Texture2D" uid="uid://v8pks8t7a48t" path="res://assets/icons/solid.svg" id="8_q4b3v"]
+[ext_resource type="Texture2D" uid="uid://bvracugjso5t3" path="res://assets/icons/textured.svg" id="9_8mu0q"]
+[ext_resource type="Texture2D" uid="uid://cypbrjc607v8o" path="res://assets/icons/zoom.svg" id="12_obdec"]
+[ext_resource type="Script" uid="uid://c38amnlxbetll" path="res://components/drag_button.gd" id="13_nwn6c"]
+[ext_resource type="Texture2D" uid="uid://culdgw0shj2gk" path="res://assets/icons/pan-hand.svg" id="14_btkd8"]
+[ext_resource type="PackedScene" uid="uid://cy4oq0hp1sa60" path="res://scenes/Alert.tscn" id="17_7xsav"]
+[ext_resource type="PackedScene" uid="uid://b3osvn0w8owjg" path="res://scenes/ScrollableWindowDialog.tscn" id="18_yd412"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h2p0"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4j1n"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7c13"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eho4f"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_545hp"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="Shader" id="Shader_x453n"]
+code = "shader_type canvas_item;
+
+uniform float highlight = 0.0;
+uniform float select = 0.0;
+
+void fragment() {
+	COLOR.rgb += vec3(max(highlight, select));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkgcv"]
+shader = SubResource("Shader_x453n")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="Shader" id="Shader_0uvm2"]
+code = "shader_type canvas_item;
+
+uniform float highlight = 0.0;
+uniform float select = 0.0;
+
+void fragment() {
+	COLOR.rgb += vec3(max(highlight, select));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3mmf"]
+shader = SubResource("Shader_0uvm2")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="Shader" id="Shader_jp63b"]
+code = "shader_type canvas_item;
+
+uniform float highlight = 0.0;
+uniform float select = 0.0;
+
+void fragment() {
+	COLOR.rgb += vec3(max(highlight, select));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5fc7"]
+shader = SubResource("Shader_jp63b")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6ym3"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kt3h"]
+shader = ExtResource("2_d8hkl")
+shader_parameter/highlight = 0.0
+shader_parameter/select = 0.0
+
+[node name="Main" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hr41x")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="File" type="MenuButton" parent="TopBar"]
+layout_mode = 2
+text = "File"
+
+[node name="Edit" type="MenuButton" parent="TopBar"]
+layout_mode = 2
+text = "Edit"
+
+[node name="Add" type="MenuButton" parent="TopBar"]
+layout_mode = 2
+text = "Add"
+
+[node name="Help" type="MenuButton" parent="TopBar"]
+layout_mode = 2
+text = "Help"
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Spacer3" type="Control" parent="Toolbar"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="PerspectiveButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_1h2p0")
+layout_mode = 2
+texture = ExtResource("3_nc8xq")
+script = ExtResource("4_oq3et")
+
+[node name="Spacer" type="Control" parent="Toolbar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VertexButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_d4j1n")
+layout_mode = 2
+texture = ExtResource("3_x4hsu")
+script = ExtResource("4_oq3et")
+
+[node name="EdgeButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_s7c13")
+layout_mode = 2
+texture = ExtResource("5_b6ene")
+script = ExtResource("4_oq3et")
+
+[node name="FaceButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_eho4f")
+layout_mode = 2
+texture = ExtResource("6_muw00")
+script = ExtResource("4_oq3et")
+
+[node name="Spacer2" type="Control" parent="Toolbar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="TrianglesButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_545hp")
+layout_mode = 2
+texture = ExtResource("7_cr2gw")
+script = ExtResource("4_oq3et")
+
+[node name="WireframeButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fkgcv")
+layout_mode = 2
+texture = ExtResource("7_mpwei")
+script = ExtResource("4_oq3et")
+
+[node name="SolidButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_e3mmf")
+layout_mode = 2
+texture = ExtResource("8_q4b3v")
+script = ExtResource("4_oq3et")
+
+[node name="TexturedButton" type="TextureRect" parent="Toolbar"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_m5fc7")
+layout_mode = 2
+texture = ExtResource("9_8mu0q")
+script = ExtResource("4_oq3et")
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="LeftBar" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/LeftBar"]
+layout_mode = 2
+text = "Left"
+
+[node name="HSplit" type="HSplitContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Content/HSplit"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="MainViewport" type="SubViewport" parent="Content/HSplit/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="3DScene" parent="Content/HSplit/SubViewportContainer/MainViewport" instance=ExtResource("1_ig7tw")]
+unique_name_in_owner = true
+
+[node name="Gizmos" type="Node2D" parent="Content/HSplit/SubViewportContainer"]
+unique_name_in_owner = true
+
+[node name="OrbitGizmo" parent="Content/HSplit/SubViewportContainer/Gizmos" instance=ExtResource("3_i5fmm")]
+unique_name_in_owner = true
+
+[node name="Icons" type="VBoxContainer" parent="Content/HSplit/SubViewportContainer/Gizmos"]
+offset_left = 76.0
+offset_top = 120.0
+offset_right = 100.0
+offset_bottom = 178.0
+theme_override_constants/separation = 10
+
+[node name="ZoomButton" type="TextureRect" parent="Content/HSplit/SubViewportContainer/Gizmos/Icons"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_m6ym3")
+layout_mode = 2
+texture = ExtResource("12_obdec")
+script = ExtResource("13_nwn6c")
+
+[node name="DragButton" type="TextureRect" parent="Content/HSplit/SubViewportContainer/Gizmos/Icons"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8kt3h")
+layout_mode = 2
+texture = ExtResource("14_btkd8")
+script = ExtResource("13_nwn6c")
+
+[node name="Tools" type="HBoxContainer" parent="Content/HSplit"]
+layout_mode = 2
+
+[node name="RightBar" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/RightBar"]
+layout_mode = 2
+text = "Right"
+
+[node name="Footer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Footer"]
+layout_mode = 2
+text = "Footer"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(600, 400)
+access = 2
+filters = PackedStringArray("*.obj;Wavefront")
+
+[node name="Alert" parent="." instance=ExtResource("17_7xsav")]
+layout_mode = 2
+
+[node name="Licences" parent="." instance=ExtResource("18_yd412")]
+title = "Licence Information"
+size = Vector2i(600, 400)
+visible = false
+dialogue_text = "Copyright (c) 2025 Andrew Wilkes
+
+The above copyright notice and this notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------
+This software uses Godot Engine, available under the following license:
+
+Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------
+FreeType
+
+Portions of this software are copyright © 2021 The FreeType Project (www.freetype.org). All rights reserved.
+
+--------
+ENet
+Godot includes the ENet library to handle high-level multiplayer.
+
+Copyright (c) 2002-2020 Lee Salzman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---------
+MBedTLS
+
+For using SSL (usually through HTTP requests), the MBedTLS Apache license:
+
+Copyright The Mbed TLS Contributors
+
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+
+[node name="About" parent="." instance=ExtResource("18_yd412")]
+title = "About"
+size = Vector2i(400, 300)
+visible = false
+dialogue_text = "Lead developer: Andrew Wilkes (https://github.com/andrew-wilkes)"
+
+[connection signal="dragged" from="Content/HSplit" to="." method="_on_h_split_dragged"]
+[connection signal="resized" from="Content/HSplit" to="." method="_on_h_split_resized"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
