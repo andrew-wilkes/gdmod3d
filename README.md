@@ -2,7 +2,7 @@
 
 Desktop PC App (Open Source version of DEVMOD3) for 3D modelling (creating and editing 3D meshes).
 
-![Screenshot](docs/screenshot.png)
+![Screenshot](media/screenshot.png)
 
 * Wavefront (.obj) file import and export
 * SVG file import to produce a plane mesh
