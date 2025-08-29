@@ -1,6 +1,6 @@
 # GDMOD3D
 
-Desktop PC App for 3D modelling (creating and editing 3D meshes).
+Desktop PC App (Open Source version of DEVMOD3) for 3D modelling (creating and editing 3D meshes).
 
 ![Screenshot](docs/screenshot.png)
 
