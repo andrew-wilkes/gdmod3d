@@ -127,8 +127,8 @@ static func get_xml_nodes(file_path: String) -> Dictionary:
 	return results
 
 
-static func simplified_vertex(v: Vector3) -> Vector3:
-	return Vector3i(int(v.x), int(v.y), int(v.z))
+static func simplified_vertex(v: Vector3) -> Vector3i:
+	return Vector3i(v)
 
 
 static func save_to_file(content: String, file_name: String):
